@@ -7,17 +7,17 @@ public class Player {
    private String name = " ";
    private int score = 0;
 
-   private boolean isIA;
 
-    public Player(String name, int score, boolean isIA) {
+
+    public Player(String name, int score) {
         this.name = name;
         this.score = score;
-        this.isIA = isIA;
+
     }
     Player(){
         this.name= null;
         this.score= 0;
-        this.isIA=true;
+
     }
 
     public String getName() {
@@ -30,14 +30,6 @@ public class Player {
 
     public int getScore() {
         return score;
-    }
-
-    public boolean isIA() {
-        return isIA;
-    }
-
-    public void setIA(boolean IA) {
-        isIA = IA;
     }
 
     public void setScore(int score) {

@@ -10,6 +10,7 @@ public class Utils {
 
         while (!valid) {
             System.out.println("indica una opcion valida: ");
+            //Devuelve true si el siguiente token en la entrada de este analizador puede ser interpretado como un valor int
             if (teclado.hasNextInt()) {
                 option = teclado.nextInt();
                 if (option >= min && option <= max) {

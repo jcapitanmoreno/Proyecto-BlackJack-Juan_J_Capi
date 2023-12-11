@@ -54,9 +54,9 @@ public class Game {
             } while (!nombreUnico);
 
             if (i == 1) {
-                players.add(new Player(name, 0, false));
+                players.add(new Player(name, 0));
             } else if (i != 1) {
-                players.add(new Player(name, 0, true));
+                players.add(new Player(name, 0));
             }
 
 
@@ -77,5 +77,37 @@ public class Game {
         System.out.println("la puntuacion del jugador " + player.getName() + " es: " + player.getScore());
 
 
+    }
+    public Player determineWinner(ArrayList<Player> players) {
+        Player ganador = null;
+        int puntuacionGanadora = 0;
+
+        // Lista para almacenar a los jugadores con la puntuación ganadora
+        ArrayList<Player> empate = new ArrayList<>();
+
+        for (Player player : players) {
+            int puntuacion = player.getScore();
+
+            // Verificar si el jugador ha superado los 21 puntos
+            if (puntuacion <= 21) {
+                // Si la puntuación actual es mayor que la puntuación ganadora actual
+                if (puntuacion > puntuacionGanadora) {
+                    puntuacionGanadora = puntuacion;
+                    ganador = player;
+                    // Limpiar la lista de empate ya que tenemos un nuevo líder
+                    empate.clear();
+                } else if (puntuacion == puntuacionGanadora) {
+                    // Si hay empate, agregar al jugador a la lista de empate
+                    empate.add(player);
+                }
+            }
+        }
+
+        // Si hay empate, devolver null
+        if (empate.size() > 0) {
+            ganador = null;
+        }
+
+        return ganador;
     }
 }
